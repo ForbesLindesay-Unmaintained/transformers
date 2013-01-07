@@ -29,7 +29,7 @@ transformer.renderFile(pth, opts, function (err, res) {
 You can also make use of:
 
 ```javascript
-transformers['foo-bar'].outputFormat;// => `xml`, `css` or `js`
+transformers['foo-bar'].outputFormat;// => `xml`, `css`, `js`, `json` or `text`
 transformers['foo-bar'].sync;// => `true` if it can be used syncronously
 transformers['foo-bar'].sudoSync;// => `true` if not always syncronous (see `Libraries that don't work synchronously`)
 transformers['foo-bar'].engines;// => an array of possible npm packages to use as the implementation
@@ -59,6 +59,7 @@ The following libraries look like they might sometimes throw exceptions when use
 ### Template engines
 
   - [atpl](http://documentup.com/soywiz/atpl.js) - Compatible with twig templates
+  - [coffeecup](http://documentup.com/gradus/coffeecup) - pure coffee-script templates (fork of coffeekup)
   - [dust](http://documentup.com/akdubya/dustjs) [(website)](http://akdubya.github.com/dustjs/) - asyncronous templates
   - [eco](http://documentup.com/sstephenson/eco) - Embedded CoffeeScript templates
   - [ect](http://documentup.com/baryshev/ect) [(website)](http://ectjs.com/) - Embedded CoffeeScript templates
@@ -82,9 +83,10 @@ The following libraries look like they might sometimes throw exceptions when use
 
 ### Other
 
-  - markdown - You can use `marked`, `supermarked`, `markdown-js` or `markdown
-  - [coffee](http://coffeescript.org/) - `npm install coffee-script`
   - cdata - No need to install anything, just wrapps text in `<![CDATA[\nYOUR TEXT\n]]>`
+  - [coffee](http://coffeescript.org/) - `npm install coffee-script`
+  - [cson](https://github.com/bevry/cson) - coffee-script based JSON format
+  - markdown - You can use `marked`, `supermarked`, `markdown-js` or `markdown
   - [uglify](http://documentup.com/mishoo/UglifyJS2) - `npm install uglify-js` minifies javascript
 
 Pull requests to add more transforms will always be accepted providing they are open-source, come with unit tests, and don't cause any of the tests to fail.
