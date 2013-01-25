@@ -56,7 +56,8 @@
     "uglify-js": "*",
     "cson": "*",
     "coffeekup": "*",
-    "coffeecup": "*"
+    "coffeecup": "*",
+    "templayed": "*"
   },
   "dependencies": {
     "promise": "~1.3.0"

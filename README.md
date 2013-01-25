@@ -71,11 +71,12 @@ The following libraries look like they might sometimes throw exceptions when use
   - [jade](http://documentup.com/visionmedia/jade) [(website)](http://jade-lang.com/) - robust, elegant, feature rich template engine
   - [jazz](http://documentup.com/shinetech/jazz)
   - [jqtpl](http://documentup.com/kof/jqtpl) [(website)](http://api.jquery.com/category/plugins/templates/) - extensible logic-less templates
-  - [JUST](http://documentup.com/baryshev/just)
+  - [JUST](http://documentup.com/baryshev/just) - EJS style template with some special syntax for layouts/partials etc.
   - [liquor](http://documentup.com/chjj/liquor) - extended EJS with significant white space
   - [mustache](http://documentup.com/janl/mustache.js) - logic less templates
   - [QEJS](http://documentup.com/jepso/QEJS) - Promises + EJS for async templating
   - [swig](http://documentup.com/paularmstrong/swig) [(website)](http://paularmstrong.github.com/swig/) - Django-like templating engine
+  - [templayed](http://documentup.com/archan937/templayed.js/) [(website)](http://archan937.github.com/templayed.js/) - Mustache focused on performance
   - [toffee](http://documentup.com/malgorithms/toffee) - templating language based on coffeescript
   - [underscore](http://documentup.com/documentcloud/underscore) [(website)](http://documentcloud.github.com/underscore/)
   - [walrus](http://documentup.com/jeremyruppel/walrus) - A bolder kind of mustache
