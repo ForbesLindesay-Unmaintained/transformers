@@ -1,3 +1,8 @@
+## 1.4.0 - 2013-01-25
+
+ - Support sync `@import` statements in **less**
+ - Report real errors from **less** (rather than objects)
+
 ## 1.3.0 - 2013-01-25
 
  - **templayed**
