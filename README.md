@@ -45,14 +45,14 @@ transformers['foo-bar'].engines;// => an array of possible npm packages to use a
 The following transformations sometimes throw an exception if run syncronously, typically they only throw an exception if you are doing something like including another file.  If you are not doing the things that cause them to fail then they are consistently safe to use syncronously.
 
    - jade (only when using `then-jade` instead of `jade`)
-   - less (when `@import` is used)
-   - stylus (when `@import` is used)
-   - jazz (I don't have an example of where this fails, but I also don't know whether it does or not)
+   - less (when `@import` is used with a url instead of a filename)
+   - jazz (When one of the functions passed as locals is asyncronous)
 
 The following libraries look like they might sometimes throw exceptions when used syncronously (if you read the source) but they never actually do so:
 
    - just
    - ect
+   - stylus
 
 ## Supported transforms
 
