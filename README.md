@@ -82,6 +82,12 @@ The following libraries look like they might sometimes throw exceptions when use
   - [walrus](http://documentup.com/jeremyruppel/walrus) - A bolder kind of mustache
   - [whiskers](http://documentup.com/gsf/whiskers.js/tree/) - logic-less focused on readability
 
+### Stylesheet Languages
+
+  - [less](http://documentup.com/cloudhead/less.js) [(website)](http://lesscss.org/) - LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions.
+  - [stylus](http://documentup.com/learnboost/stylus) [(website)](http://learnboost.github.com/stylus/) - revolutionary CSS generator making braces optional
+  - [sass](http://documentup.com/visionmedia/sass.js) [(website)](http://sass-lang.com/) - Sassy CSS
+
 ### Other
 
   - cdata - No need to install anything, just wrapps text in `<![CDATA[\nYOUR TEXT\n]]>`
