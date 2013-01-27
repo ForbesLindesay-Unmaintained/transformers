@@ -1,3 +1,7 @@
+## 1.5.0 - 2013-01-27
+
+ - **dot**
+
 ## 1.4.0 - 2013-01-25
 
  - Support sync `@import` statements in **less**
