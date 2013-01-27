@@ -60,6 +60,7 @@ The following libraries look like they might sometimes throw exceptions when use
 
   - [atpl](http://documentup.com/soywiz/atpl.js) - Compatible with twig templates
   - [coffeecup](http://documentup.com/gradus/coffeecup) - pure coffee-script templates (fork of coffeekup)
+  - [dot](http://documentup.com/olado/doT) [(website)](https://github.com/Katahdin/dot-packer) - focused on speed
   - [dust](http://documentup.com/akdubya/dustjs) [(website)](http://akdubya.github.com/dustjs/) - asyncronous templates
   - [eco](http://documentup.com/sstephenson/eco) - Embedded CoffeeScript templates
   - [ect](http://documentup.com/baryshev/ect) [(website)](http://ectjs.com/) - Embedded CoffeeScript templates

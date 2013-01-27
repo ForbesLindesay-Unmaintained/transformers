@@ -58,7 +58,8 @@
     "coffeekup": "*",
     "coffeecup": "*",
     "templayed": "*",
-    "plates": "*"
+    "plates": "*",
+    "dot": "*"
   },
   "dependencies": {
     "promise": "~1.3.0"
