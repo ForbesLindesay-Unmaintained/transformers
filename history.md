@@ -1,3 +1,9 @@
+## 1.6.0 - 2013-01-29
+
+ - **uglify-css**
+ - **uglify-json**
+ - Rename **uglify** to **uglify-js**
+
 ## 1.5.0 - 2013-01-27
 
  - **dot**
