@@ -2,59 +2,9 @@
 
   String/Data transformations for use in templating libraries, static site generators and web frameworks.  This gathers the most useful transformations you can apply to text or data into one library with a consistent API.  Transformations can be pretty much anything but most are either compilers or templating engines.
 
-## API
-
-  To apply a transformation called `foo-bar` to a string `str` and a file at path `pth` with options `opts`:
-
-  **N.B. note that you will need to also have the foo-bar library installed**
-
-```javascript
-var transfomers = require('tramsformers');
-
-var transformer = transformers['foo-bar'];
-
-var rendered = transformer.renderSync(str, opts);
-
-transformer.render(str, opts, function (err, rendered) {
-  //Some transformations can only be used asyncronously
-});
-
-var rendered = transformer.renderFileSync(pth, opts);
-
-transformer.renderFile(pth, opts, function (err, res) {
-  //Some transformations can only be used asyncronously
-});
-```
-
-You can also make use of:
-
-```javascript
-transformers['foo-bar'].outputFormat;// => `xml`, `css`, `js`, `json` or `text`
-transformers['foo-bar'].sync;// => `true` if it can be used syncronously
-transformers['foo-bar'].sudoSync;// => `true` if not always syncronous (see `Libraries that don't work synchronously`)
-transformers['foo-bar'].engines;// => an array of possible npm packages to use as the implementation
-```
-
-## Libraries that don't work synchronously
-
-  The following transformations will always throw an exception if you attempt to run them synchronously:
-
-   1. dust
-   2. qejs
-
-The following transformations sometimes throw an exception if run syncronously, typically they only throw an exception if you are doing something like including another file.  If you are not doing the things that cause them to fail then they are consistently safe to use syncronously.
-
-   - jade (only when using `then-jade` instead of `jade`)
-   - less (when `@import` is used with a url instead of a filename)
-   - jazz (When one of the functions passed as locals is asyncronous)
-
-The following libraries look like they might sometimes throw exceptions when used syncronously (if you read the source) but they never actually do so:
-
-   - just
-   - ect
-   - stylus
-
 ## Supported transforms
+
+  To use each of these transforms you will also need to install the associated npm module for that transformer.
 
 ### Template engines
 
@@ -89,12 +39,88 @@ The following libraries look like they might sometimes throw exceptions when use
   - [stylus](http://documentup.com/learnboost/stylus) [(website)](http://learnboost.github.com/stylus/) - revolutionary CSS generator making braces optional
   - [sass](http://documentup.com/visionmedia/sass.js) [(website)](http://sass-lang.com/) - Sassy CSS
 
+### Minifiers
+
+  - [uglify-js](http://documentup.com/mishoo/UglifyJS2) - `npm install uglify-js` minifies javascript
+  - [uglify-css](https://github.com/visionmedia/css) - `npm install css` minifies css
+  - ugilify-json - No need to install anything, just minifies/beautifies JSON
+
 ### Other
 
   - cdata - No need to install anything, just wrapps text in `<![CDATA[\nYOUR TEXT\n]]>`
-  - [coffee](http://coffeescript.org/) - `npm install coffee-script`
+  - [coffee-script](http://coffeescript.org/) - `npm install coffee-script`
   - [cson](https://github.com/bevry/cson) - coffee-script based JSON format
-  - markdown - You can use `marked`, `supermarked`, `markdown-js` or `markdown
-  - [uglify](http://documentup.com/mishoo/UglifyJS2) - `npm install uglify-js` minifies javascript
+  - markdown - You can use `marked`, `supermarked`, `markdown-js` or `markdown`
 
 Pull requests to add more transforms will always be accepted providing they are open-source, come with unit tests, and don't cause any of the tests to fail.
+
+## API
+
+  The exported object `transformers` is a collection of named transformers.  To access an individual transformer just do:
+
+  ```javascript
+  var transformer = require('transformers')['transformer-name']
+  ```
+
+### Transformer
+
+#### Transformer.engines
+
+  Returns an array of engines that can be used to power this transformer.  The first of these that's installed will be used for the transformation.
+
+  To enable a transformation just take `[engine] = Transformer.engines[0]` and then do `npm install [engine]`.  If `[engine]` is `.` there is no need to install an engine from npm to use the transformer.
+
+#### Transformer.render(str, options, cb)
+
+  Tranform the string `str` using the `Transformer` with the provided options and call the callback `cb(err, res)`.
+
+  If no `cb` is provided, this method returns a [promises/A+](http://promises-aplus.github.com/promises-spec/) promise.
+
+#### Transformer.renderSync(str, options)
+
+  Synchronous version of `Transformer.render`
+
+#### Transformer.renderFile(filename, options, cb)
+
+  Reads the file at filename into `str` and sets `options.filename = filename` then calls `Transform.render(str, options, cb)`.
+
+  If no `cb` is provided, this method returns a [promises/A+](http://promises-aplus.github.com/promises-spec/) promise.
+
+#### Tranformer.renderFileSync(filename, options)
+
+  Synchronous version of `Tranformer.renderFile`
+
+#### Transformer.outputFormat
+
+  A string, one of:
+
+   - `'xml'`
+   - `'css'`
+   - `'js'`
+   - `'json'`
+   - `'text'`
+
+Adding to this list will **not** result in a major version change, so you should handle unexpected types gracefully (I'd suggest default to assuming `'text'`).
+
+#### Transformer.sync
+
+  `true` if the transformer can be used syncronously, `false` otherwise.
+
+## Libraries that don't work synchronously
+
+  The following transformations will always throw an exception if you attempt to run them synchronously:
+
+   1. dust
+   2. qejs
+
+The following transformations sometimes throw an exception if run syncronously, typically they only throw an exception if you are doing something like including another file.  If you are not doing the things that cause them to fail then they are consistently safe to use syncronously.
+
+   - jade (only when using `then-jade` instead of `jade`)
+   - less (when `@import` is used with a url instead of a filename)
+   - jazz (When one of the functions passed as locals is asyncronous)
+
+The following libraries look like they might sometimes throw exceptions when used syncronously (if you read the source) but they never actually do so:
+
+   - just
+   - ect
+   - stylus
