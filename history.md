@@ -1,3 +1,10 @@
+## 1.7.0 - 2013-01-30
+
+ - **component-js**
+ - **component-css**
+ - **html2jade** - must be `v0.0.7` because of a bug in later versions
+ - Much more extensive tests
+
 ## 1.6.0 - 2013-01-29
 
  - **uglify-css**

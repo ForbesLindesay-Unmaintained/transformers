@@ -51,6 +51,9 @@
   - [coffee-script](http://coffeescript.org/) - `npm install coffee-script`
   - [cson](https://github.com/bevry/cson) - coffee-script based JSON format
   - markdown - You can use `marked`, `supermarked`, `markdown-js` or `markdown`
+  - [component-js](http://documentup.com/component/component) [(website)](http://component.io) - `npm install component-builder` options: `{development: false}`
+  - [component-css](http://documentup.com/component/component) [(website)](http://component.io) - `npm install component-builder` options: `{development: false}`
+  - [html2jade](http://documentup.com/donpark/html2jade) [(website)](http://html2jade.aaron-powell.com/) - `npm install html2jade@0.0.7` note that later versions have a bug that means they won't work (this will be fixed by [pull/48](https://github.com/donpark/html2jade/pull/48))
 
 Pull requests to add more transforms will always be accepted providing they are open-source, come with unit tests, and don't cause any of the tests to fail.
 

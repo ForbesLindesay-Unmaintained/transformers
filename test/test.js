@@ -3,14 +3,14 @@ var fs = require('fs');
 var path = require('path');
 var expect = require('expect.js');
 
-fs.readdirSync(path.join(__dirname, 'transformers'))
+fs.readdirSync(path.join(__dirname, 'simple'))
   .forEach(function (transformer) {
     if (!transformers[transformer]) {
       throw new Error(transformer + ' appears to be undefined.');
     }
     transformer = transformers[transformer];
     function locate(name) {
-      return path.join(__dirname, 'transformers', transformer.name, name + '.txt');
+      return path.join(__dirname, 'simple', transformer.name, name + '.txt');
     }
     function read(name) {
       try {
@@ -68,3 +68,56 @@ fs.readdirSync(path.join(__dirname, 'transformers'))
       })
     });
   });
+
+
+
+    function read(name) {
+      try {
+        return fs.readFileSync(locate(name)).toString();
+      } catch (ex) {
+        return null;
+      }
+    }
+
+
+describe('uglify-js', function () {
+  var str = fs.readFileSync(path.join(__dirname, 'fixtures', 'uglify-js', 'script.js')).toString();
+  it('minifies files', function () {
+    var res = transformers['uglify-js'].renderSync(str, {});
+    expect(res.length).to.be.lessThan(82);
+    expect(require('vm').runInNewContext(res)).to.be('Hello Forbes Lindesay!');
+  });
+  it('beautifies files with {mangle: false, compress: false, output: {beautify: true}}', function () {
+    var res = transformers['uglify-js'].renderSync(str, {mangle: false, compress: false, output: {beautify: true}});
+    expect(res).to.be('(function(name) {\n    function hello(world) {\n        return "Hello " + world + "!";\n    }\n    return hello(name);\n})("Forbes Lindesay");');
+    expect(require('vm').runInNewContext(res)).to.be('Hello Forbes Lindesay!');
+  });
+});
+
+
+
+describe('component', function () {
+  var p = path.join(__dirname, 'fixtures', 'component', 'component.json');
+  var output = path.join(__dirname, 'fixtures', 'component', 'build');
+  function simplifyCSS(str) {
+    return transformers['uglify-css'].renderSync(str);
+  }
+  describe('component-js', function () {
+    it('builds the JavaScript file', function (done) {
+      transformers['component-js'].renderFile(p, {}, function (err, res) {
+        if (err) return done(err);
+        expect(require('vm').runInNewContext(res + '\nrequire("foo")')).to.be('foo');
+        done();
+      })
+    });
+  });
+  describe('component-css', function () {
+    it('builds the CSS file', function (done) {
+      transformers['component-css'].renderFile(p, {}, function (err, res) {
+        if (err) return done(err);
+        expect(simplifyCSS(res)).to.be("#foo{name:'bar'}#baz{name:'bing'}");
+        done();
+      })
+    });
+  });
+});
