@@ -1,0 +1,79 @@
+<!DOCTYPE html><html><head><title>Transformers</title><link href="../style.css" rel="stylesheet"></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><div class="container-fluid"><a data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a href="/" class="brand">Tranformers</a><div class="nav-collapse collapse"><p class="pull-right navbar-text"><a href="https://github.com/ForbesLindesay/transformers" class="navbar-link">GitHub</a></p><ul class="nav"><li><a href="/templating/">Templating</a></li><li><a href="/stylesheets/">Stylesheets</a></li><li><a href="/minifiers/">Minifiers</a></li><li><a href="/other/">Other</a></li><li class="active"><a>API</a></li></ul></div></div></div></div><div class="container-fluid"><div class="row-fluid"><!--.span2<div class="well sidebar-nav"><ul class="nav nav-list"><li><a href="#uglify-js">uglify-js</a></li><li><a href="#uglify-css">uglify-css</a></li><li><a href="#uglify-json">uglify-json</a></li></ul></div>--><div class="span12"><div class="row-fluid"><h1>API</h1>
+<p>  The exported object <code>transformers</code> is a collection of named transformers.  To access an individual transformer just do:
+
+</p>
+<pre><code class="lang-javascript">  var transformer = require(&#39;transformers&#39;)[&#39;transformer-name&#39;]</code></pre>
+<h3>Transformer</h3>
+<h4>Transformer.engines</h4>
+<p>  Returns an array of engines that can be used to power this transformer.  The first of these that&#39;s installed will be used for the transformation.
+
+</p>
+<p>  To enable a transformation just take <code>[engine] = Transformer.engines[0]</code> and then do <code>npm install [engine]</code>.  If <code>[engine]</code> is <code>.</code> there is no need to install an engine from npm to use the transformer.
+
+</p>
+<h4>Transformer.render(str, options, cb)</h4>
+<p>  Tranform the string <code>str</code> using the <code>Transformer</code> with the provided options and call the callback <code>cb(err, res)</code>.
+
+</p>
+<p>  If no <code>cb</code> is provided, this method returns a <a href="http://promises-aplus.github.com/promises-spec/">promises/A+</a> promise.
+
+</p>
+<h4>Transformer.renderSync(str, options)</h4>
+<p>  Synchronous version of <code>Transformer.render</code>
+
+</p>
+<h4>Transformer.renderFile(filename, options, cb)</h4>
+<p>  Reads the file at filename into <code>str</code> and sets <code>options.filename = filename</code> then calls <code>Transform.render(str, options, cb)</code>.
+
+</p>
+<p>  If no <code>cb</code> is provided, this method returns a <a href="http://promises-aplus.github.com/promises-spec/">promises/A+</a> promise.
+
+</p>
+<h4>Tranformer.renderFileSync(filename, options)</h4>
+<p>  Synchronous version of <code>Tranformer.renderFile</code>
+
+</p>
+<h4>Transformer.outputFormat</h4>
+<p>  A string, one of:
+
+</p>
+<ul>
+<li><code>&#39;xml&#39;</code></li>
+<li><code>&#39;css&#39;</code></li>
+<li><code>&#39;js&#39;</code></li>
+<li><code>&#39;json&#39;</code></li>
+<li><code>&#39;text&#39;</code></li>
+</ul>
+<p>Adding to this list will <strong>not</strong> result in a major version change, so you should handle unexpected types gracefully (I&#39;d suggest default to assuming <code>&#39;text&#39;</code>).
+
+</p>
+<h4>Transformer.sync</h4>
+<p>  <code>true</code> if the transformer can be used syncronously, <code>false</code> otherwise.
+
+</p>
+<h2>Libraries that don&#39;t work synchronously</h2>
+<p>  The following transformations will always throw an exception if you attempt to run them synchronously:
+
+</p>
+<ol>
+<li>dust</li>
+<li>qejs</li>
+<li>html2jade</li>
+</ol>
+<p>The following transformations sometimes throw an exception if run syncronously, typically they only throw an exception if you are doing something like including another file.  If you are not doing the things that cause them to fail then they are consistently safe to use syncronously.
+
+</p>
+<ul>
+<li>jade (only when using <code>then-jade</code> instead of <code>jade</code>)</li>
+<li>less (when <code>@import</code> is used with a url instead of a filename)</li>
+<li>jazz (When one of the functions passed as locals is asyncronous)</li>
+</ul>
+<p>The following libraries look like they might sometimes throw exceptions when used syncronously (if you read the source) but they never actually do so:
+
+</p>
+<ul>
+<li>just</li>
+<li>ect</li>
+<li>stylus</li>
+</ul>
+</div></div></div></div></body></html>
