@@ -36,7 +36,7 @@ all(engines)
 
 var nextRenderID = 0;
 var renders = {};
-function filterMixin(buf, type, options) {
+function filterMixin(buf, type, options, highlight) {
   var start = buf.length;
   this.block();
   var str = buf.splice(start).join('');
@@ -44,7 +44,7 @@ function filterMixin(buf, type, options) {
   if (indent) {
     str = str.replace(new RegExp('^' + indent, 'gm'), '');
   }
-  renders[nextRenderID] = [str, type, options || this.attributes || {}];
+  renders[nextRenderID] = [str, type, options || this.attributes || {}, highlight];
   buf.push('<RENDER>' + (nextRenderID++) + '</RENDER>');
 }
 
@@ -58,12 +58,18 @@ function renderFilters(str, filename, cb) {
       var src = renders[n][0];
       var name = renders[n][1];
       var options = renders[n][2];
+      var highlight = renders[n][3];
       if (!options.filename) {
         options.filename = filename;
       }
-      waiting.push(transformers[name].render(src, options)
+      waiting.push((name === '@' ? new require('promise')(function (resolver) { resolver.fulfill(src) }) : transformers[name].render(src, options))
         .then(function (res) {
-          results[n] = res;
+          if (highlight) {
+            if (highlight === true) highlight = {};
+            results[n] = transformers['highlight'].renderSync(res, typeof highlight === 'string' ? {lang: highlight} : highlight);
+          } else {
+            results[n] = res;
+          }
         }));
     }(match[1]));
   }
