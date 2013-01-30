@@ -24,6 +24,7 @@ mixin navItem(path, text, active)
       a=text
   else
     li
+      - path = active === '/' ? path.replace(/^\//, '') : path.replace(/^\//, '../');
       a(href=path)=text
 mixin navbar(active)
   .navbar.navbar-inverse.navbar-fixed-top
@@ -33,7 +34,8 @@ mixin navbar(active)
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.brand(href='/') Tranformers
+        - var homePath = active === '/' ? '' : '../';
+        a.brand(href=homePath) Tranformers
         .nav-collapse.collapse
           p.pull-right.navbar-text
             a.navbar-link(href="https://github.com/ForbesLindesay/transformers") GitHub
