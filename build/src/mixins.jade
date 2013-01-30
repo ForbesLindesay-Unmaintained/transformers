@@ -1,0 +1,53 @@
+mixin displayTransform(name, options)
+  .row-fluid
+    .span6
+      h3 Before
+      pre
+        code(class=attributes.pre?'lang-' + attributes.pre:'')
+          +filter(buf, '@', options, attributes.pre)
+            block
+    .span6
+      h3 After
+      pre
+        code(class=attributes.post?'lang-' + attributes.post:'')
+          +filter(buf, name, options, attributes.post)
+            block
+mixin code(name)
+  pre
+    code(class=name?'lang-' + name:'')
+      +filter(buf, '@', {}, name)
+        block
+
+mixin navItem(path, text, active)
+  if path === active
+    li.active
+      a=text
+  else
+    li
+      a(href=path)=text
+mixin navbar(active)
+  .navbar.navbar-inverse.navbar-fixed-top
+    .navbar-inner
+      .container-fluid
+        a.btn.btn-navbar('data-toggle'='collapse', 'data-target'='.nav-collapse')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.brand(href='/') Tranformers
+        .nav-collapse.collapse
+          p.pull-right.navbar-text
+            a.navbar-link(href="https://github.com/ForbesLindesay/transformers") GitHub
+          ul.nav
+            +navItem('/templating/', 'Templating', active)
+            +navItem('/stylesheets/', 'Stylesheets', active)
+            +navItem('/minifiers/', 'Minifiers', active)
+            +navItem('/other/', 'Other', active)
+            +navItem('/api/', 'API', active)
+
+
+mixin transformer(name)
+  .row-fluid
+    h2(id=name.toLowerCase())=name
+  block
+
+

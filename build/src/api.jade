@@ -1,0 +1,88 @@
+!!! 5
+html
+  include ./head.jade
+  body
+    +navbar('/api/')
+    .container-fluid
+      .row-fluid
+        //.span2
+          .well.sidebar-nav
+            ul.nav.nav-list
+              li: a(href='#uglify-js') uglify-js
+              li: a(href='#uglify-css') uglify-css
+              li: a(href='#uglify-json') uglify-json
+
+        .span12
+          .row-fluid
+            :markdown
+              # API
+
+                The exported object `transformers` is a collection of named transformers.  To access an individual transformer just do:
+
+                ```javascript
+                var transformer = require('transformers')['transformer-name']
+                ```
+
+              ### Transformer
+
+              #### Transformer.engines
+
+                Returns an array of engines that can be used to power this transformer.  The first of these that's installed will be used for the transformation.
+
+                To enable a transformation just take `[engine] = Transformer.engines[0]` and then do `npm install [engine]`.  If `[engine]` is `.` there is no need to install an engine from npm to use the transformer.
+
+              #### Transformer.render(str, options, cb)
+
+                Tranform the string `str` using the `Transformer` with the provided options and call the callback `cb(err, res)`.
+
+                If no `cb` is provided, this method returns a [promises/A+](http://promises-aplus.github.com/promises-spec/) promise.
+
+              #### Transformer.renderSync(str, options)
+
+                Synchronous version of `Transformer.render`
+
+              #### Transformer.renderFile(filename, options, cb)
+
+                Reads the file at filename into `str` and sets `options.filename = filename` then calls `Transform.render(str, options, cb)`.
+
+                If no `cb` is provided, this method returns a [promises/A+](http://promises-aplus.github.com/promises-spec/) promise.
+
+              #### Tranformer.renderFileSync(filename, options)
+
+                Synchronous version of `Tranformer.renderFile`
+
+              #### Transformer.outputFormat
+
+                A string, one of:
+
+                 - `'xml'`
+                 - `'css'`
+                 - `'js'`
+                 - `'json'`
+                 - `'text'`
+
+              Adding to this list will **not** result in a major version change, so you should handle unexpected types gracefully (I'd suggest default to assuming `'text'`).
+
+              #### Transformer.sync
+
+                `true` if the transformer can be used syncronously, `false` otherwise.
+
+              ## Libraries that don't work synchronously
+
+                The following transformations will always throw an exception if you attempt to run them synchronously:
+
+                 1. dust
+                 2. qejs
+                 3. html2jade
+
+              The following transformations sometimes throw an exception if run syncronously, typically they only throw an exception if you are doing something like including another file.  If you are not doing the things that cause them to fail then they are consistently safe to use syncronously.
+
+                 - jade (only when using `then-jade` instead of `jade`)
+                 - less (when `@import` is used with a url instead of a filename)
+                 - jazz (When one of the functions passed as locals is asyncronous)
+
+              The following libraries look like they might sometimes throw exceptions when used syncronously (if you read the source) but they never actually do so:
+
+                 - just
+                 - ect
+                 - stylus

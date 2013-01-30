@@ -1,0 +1,70 @@
+!!! 5
+html
+  include ./head.jade
+  body
+    +navbar('/stylesheets/')
+    .container-fluid
+      .row-fluid
+        .span2
+          .well.sidebar-nav
+            ul.nav.nav-list
+              li: a(href='#less') less
+              li: a(href='#stylus') stylus
+              li: a(href='#sass') sass
+
+        .span10
+          .row-fluid
+            h1 Stylesheet Languages
+            p This page lists languages that compile to CSS.  It's worth noting that there's also a seperate minifier/formatter available for CSS under minifiers.
+          +transformer('less')
+            .row-fluid
+              p To use less you must install less:
+              +code(false).
+                $ npm install less
+            +displayTransform('less')(pre='css',post='css').
+              .box-shadow(@style, @c) when (iscolor(@c)) {
+                box-shadow:         @style @c;
+                -webkit-box-shadow: @style @c;
+                -moz-box-shadow:    @style @c;
+              }
+              .box-shadow(@style, @alpha: 50%) when(isnumber(@alpha)){
+                .box-shadow(@style, rgba(0, 0, 0, @alpha));
+              }
+              .box { 
+                color: saturate(#f938ab, 5%);
+                border-color: lighten(#f938ab, 30%);
+                div { .box-shadow(0 0 5px, 30%) }
+              }
+          +transformer('stylus')
+            .row-fluid
+              p To use stylus you must install stylus:
+              +code(false).
+                $ npm install stylus
+            +displayTransform('stylus')(pre='css',post='css').
+              border-radius()
+                -webkit-border-radius arguments
+                -moz-border-radius arguments
+                border-radius arguments
+                
+              body
+                font 12px Helvetica, Arial, sans-serif
+                
+              a.button
+                border-radius(5px)
+          +transformer('sass')
+            .row-fluid
+              p To use sass you must install sass:
+              +code(false).
+                $ npm install sass
+            +displayTransform('sass')(pre='css',post='css').
+              +large
+                :font-size 15px
+              +striped
+                tr
+                  :background #fff
+                  +large
+                  &:odd
+                    :background #000
+              table
+                +striped
+                :border none

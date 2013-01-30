@@ -1,0 +1,75 @@
+!!! 5
+html
+  include ./head.jade
+  body
+    +navbar('/minifiers/')
+    .container-fluid
+      .row-fluid
+        .span2
+          .well.sidebar-nav
+            ul.nav.nav-list
+              li: a(href='#uglify-js') uglify-js
+              li: a(href='#uglify-css') uglify-css
+              li: a(href='#uglify-json') uglify-json
+
+        .span10
+          .row-fluid
+            h1 Minifiers
+          +transformer('uglify-js')
+            .row-fluid
+              p uglify-js parses and minifies JavaScript.  To use it you must install uglify-js:
+              +code(false).
+                $ npm install uglify-js
+            +displayTransform('uglify-js')(pre='javascript',post='javascript').
+              function hello(world) {
+                return 'hello ' + world;
+              }
+            .row-fluid
+              p
+                | If you pass options:
+                code { mangle: false, compress: false, output: { beautify: true } }
+                |  you can beautify JavaScript instead of minifying it.
+            +displayTransform('uglify-js', { mangle: false, compress: false, output: { beautify: true } })(pre='javascript',post='javascript').
+              function hello(world){return 'hello '+world;}
+          +transformer('uglify-css')
+            .row-fluid
+              p uglify-css parses and minifies css.  To use it you must install css:
+              +code(false).
+                $ npm install css
+            +displayTransform('uglify-css')(pre='css',post='css').
+              .foo {
+                name: 'foo';
+              }
+              #bar {
+                name: 'bar';
+              }
+            .row-fluid
+              p
+                | If you pass an option:
+                code { beautify: true }
+                |  you can beautify css instead of minifying it.
+            +displayTransform('uglify-css', {beautify: true})(pre='css',post='css').
+              .foo{name:'foo';}#bar{name:'bar';}
+          +transformer('uglify-json')
+            .row-fluid
+              p uglify-json parses and minifies json.  You don't need to install anything to use it
+            +displayTransform('uglify-json')(pre='javascript',post='javascript').
+              {
+                "foo": "bar",
+                "numbers": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
+              }
+            .row-fluid
+              p
+                | If you pass an option:
+                code { beautify: 2 }
+                |  you can beautify json (with 2 spaces) instead of minifying it.
+            +displayTransform('uglify-json', {beautify: 2})(pre='javascript',post='javascript').
+              {"foo":"bar","numbers":[1,2,3,4,5,6,7]}

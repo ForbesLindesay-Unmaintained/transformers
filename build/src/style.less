@@ -1,0 +1,195 @@
+@import "bootstrap/less/bootstrap.less";
+
+body {
+  padding-top: 50px;
+}
+
+@import "bootstrap/less/responsive.less";
+
+
+code {
+  overflow-x: auto;
+}
+
+@media (min-width: 980px) {
+  .sidebar-nav {
+    top: 50px;
+    position: fixed;
+  }
+  //fix fragment navigation
+  h2:before { 
+    display: block; 
+    content: " "; 
+    margin-top: -50px; 
+    height: 50px; 
+    visibility: hidden; 
+  }
+}
+.sidebar-nav.well {
+  padding: 0px;
+  display: block;
+}
+
+@media (min-width: 600px) {
+  .hero-unit {
+    padding: 60px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: @baseLineHeight * 1.5;
+    color: @heroUnitLeadColor;
+    background-color: @heroUnitBackground;
+    .border-radius(6px);
+    h1 {
+      margin-bottom: 0;
+      font-size: 60px;
+      line-height: 1;
+      color: @heroUnitHeadingColor;
+      letter-spacing: -1px;
+    }
+    li {
+      line-height: @baseLineHeight * 1.5; // Reset since we specify in type.less
+    }
+  }
+  @media (min-height: 600px) {
+    .hero-unit {
+      margin-top: 100px;
+    }
+  }
+  @media (min-height: 800px) {
+    .hero-unit {
+      margin-top: 200px;
+    }
+  }
+  @media (min-height: 1000px) {
+    .hero-unit {
+      margin-top: 300px;
+    }
+  }
+}
+
+
+/*
+Monokai style - ported by Luigi Maselli - http://grigio.org
+*/
+
+pre code {
+  display: block; padding: 0.5em;
+  background: #272822;
+}
+
+pre .tag,
+pre .tag .title,
+pre .keyword,
+pre .literal,
+pre .strong,
+pre .change,
+pre .winutils,
+pre .flow,
+pre .lisp .title,
+pre .clojure .built_in,
+pre .nginx .title,
+pre .tex .special {
+  color: #F92672;
+}
+
+pre code {
+  color: #DDD;
+}
+
+pre code .constant {
+  color: #66D9EF;
+}
+
+pre .code,
+pre .class .title,
+pre .header {
+  color: white;
+}
+
+pre .link_label,
+pre .attribute,
+pre .symbol,
+pre .symbol .string,
+pre .value,
+pre .regexp {
+  color: #BF79DB;
+}
+
+pre .link_url,
+pre .tag .value,
+pre .string,
+pre .bullet,
+pre .subst,
+pre .title,
+pre .emphasis,
+pre .haskell .type,
+pre .preprocessor,
+pre .ruby .class .parent,
+pre .built_in,
+pre .sql .aggregate,
+pre .django .template_tag,
+pre .django .variable,
+pre .smalltalk .class,
+pre .javadoc,
+pre .django .filter .argument,
+pre .smalltalk .localvars,
+pre .smalltalk .array,
+pre .attr_selector,
+pre .pseudo,
+pre .addition,
+pre .stream,
+pre .envvar,
+pre .apache .tag,
+pre .apache .cbracket,
+pre .tex .command,
+pre .prompt {
+  color: #A6E22E;
+}
+
+pre .comment,
+pre .java .annotation,
+pre .blockquote,
+pre .horizontal_rule,
+pre .python .decorator,
+pre .template_comment,
+pre .pi,
+pre .doctype,
+pre .deletion,
+pre .shebang,
+pre .apache .sqbracket,
+pre .tex .formula {
+  color: #75715E;
+}
+
+pre .keyword,
+pre .literal,
+pre .css .id,
+pre .phpdoc,
+pre .title,
+pre .header,
+pre .haskell .type,
+pre .vbscript .built_in,
+pre .sql .aggregate,
+pre .rsl .built_in,
+pre .smalltalk .class,
+pre .diff .header,
+pre .chunk,
+pre .winutils,
+pre .bash .variable,
+pre .apache .tag,
+pre .tex .special,
+pre .request,
+pre .status {
+  font-weight: bold;
+}
+
+pre .coffeescript .javascript,
+pre .javascript .xml,
+pre .tex .formula,
+pre .xml .javascript,
+pre .xml .vbscript,
+pre .xml .css,
+pre .xml .cdata {
+  opacity: 0.5;
+}

@@ -1,9 +1,0 @@
-mixin displayTransform(name, options)
-  pre
-    code(class=attributes.pre?'lang-' + attributes.pre:'')
-      +filter(buf, '@', options, attributes.pre)
-        block
-  pre
-    code(class=attributes.post?'lang-' + attributes.post:'')
-      +filter(buf, name, options, attributes.post)
-        block

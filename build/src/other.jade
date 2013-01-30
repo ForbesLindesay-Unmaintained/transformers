@@ -1,0 +1,108 @@
+!!! 5
+html
+  include ./head.jade
+  body
+    +navbar('/other/')
+    .container-fluid
+      .row-fluid
+        .span2
+          .well.sidebar-nav
+            ul.nav.nav-list
+              li: a(href='#cdata') cdata
+              li: a(href='#coffee-script') coffee-script
+              li: a(href='#cson') cson
+              li: a(href='#markdown') markdown
+              li: a(href='#html2jade') html2jade
+              li: a(href='#component') component
+
+        .span10
+          .row-fluid
+            h1 Other Transformers
+          +transformer('cdata')
+            .row-fluid
+              p cdata just wraps code in <code>cdata</code> tags.  You don't need to install anything to use cdata
+            +displayTransform('cdata')(post='xml').
+              foo bar
+          +transformer('coffee-script')
+            .row-fluid
+              p coffee-script is a high level language that compiles to JavaScript.  To use it you will need to install coffee-script:
+              +code(false).
+                $ npm install coffee-script
+            +displayTransform('coffee-script')(pre='coffeescript', post='javascript').
+              # Assignment:
+              number   = 42
+              opposite = true
+
+              # Conditions:
+              number = -42 if opposite
+
+              # Functions:
+              square = (x) -> x * x
+
+              # Arrays:
+              list = [1, 2, 3, 4, 5]
+
+              # Objects:
+              math =
+                root:   Math.sqrt
+                square: square
+                cube:   (x) -> x * square x
+          +transformer('cson')
+            .row-fluid
+              p coffee-script is like JSON but with coffee-script like syntax.  To use it you will need to install cson:
+              +code(false).
+                $ npm install cson
+            +displayTransform('cson')(pre='coffeescript', post='javascript').
+              {
+                abc: [
+                  'a'
+                  'b'
+                  'c'
+                ]
+                a:
+                  b: 'c'
+              }
+          +transformer('markdown')
+            .row-fluid
+              p markdown is a system for writing documents.  The aim is that markdown should be easy to read even when it's in plain text form, but that it can also compile to a nicer formatted html view:
+            +displayTransform('markdown')(pre='markdown', post='xml').
+              # Heading 1
+              ## Heading 2
+
+              ```
+              A code sample
+              ```
+
+               - ItemA
+               - ItemB
+               - ItemC
+
+               1. One
+               2. Two
+               3. Three
+          +transformer('html2jade')
+            .row-fluid
+              p html2jade attempts to convert html back into jade.  Jade is a templating language.  To use html to jade you will need to install it at version 0.0.7:
+            +code(false).
+              $ npm install html2jade@0.0.7
+            +displayTransform('html2jade')(pre='xml', post='jade').
+              <!doctype html>
+              <html>
+                  <head>
+                    <link rel="stylesheet" href="/site.css" />
+                    <title>Hello</title>
+                  </head>
+                  <body>
+                    <h1>Hello world!</h1>
+                  </body>
+              </html>
+          +transformer('component')
+            .row-fulid
+              :markdown
+                The two transformers 'component-js' and 'component-css' produce the JavaScript and CSS files from a [component](https://github.com/component/component).  This can't be easilly demoed here because it requires multiple files to make sense.  To use, first install component-builder.
+
+              +code(false)
+                $ npm install component-builder
+
+              :markdown
+                Then you can build like any other transformer by pointing it at the `component.json` file.

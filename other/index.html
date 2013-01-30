@@ -1,0 +1,103 @@
+<!DOCTYPE html><html><head><title>Transformers</title><link href="../style.css" rel="stylesheet"></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><div class="container-fluid"><a data-toggle="collapse" data-target=".nav-collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a href="/" class="brand">Tranformers</a><div class="nav-collapse collapse"><p class="pull-right navbar-text"><a href="https://github.com/ForbesLindesay/transformers" class="navbar-link">GitHub</a></p><ul class="nav"><li><a href="/stylesheets/">Stylesheets</a></li><li><a href="/minifiers/">Minifiers</a></li><li class="active"><a>Other</a></li></ul></div></div></div></div><div class="container-fluid"><div class="row-fluid"><div class="span2"><div class="well sidebar-nav"><ul class="nav nav-list"><li><a href="#cdata">cdata</a></li><li><a href="#coffee-script">coffee-script</a></li><li><a href="#cson">cson</a></li><li><a href="#markdown">markdown</a></li><li><a href="#html2jade">html2jade</a></li><li><a href="#component">component</a></li></ul></div></div><div class="span10"><div class="row-fluid"><h1>Other Transformers</h1></div><div class="row-fluid"><h2 id="cdata">cdata</h2></div><div class="row-fluid"><p>cdata just wraps code in <code>cdata</code> tags.  You don't need to install anything to use cdata</p></div><div class="row-fluid"><div class="span6"><h3>Before</h3><pre><code class="">foo bar</code></pre></div><div class="span6"><h3>After</h3><pre><code class="lang-xml"><span class="cdata">&lt;![CDATA[
+foo bar
+]]&gt;</span></code></pre></div></div><div class="row-fluid"><h2 id="coffee-script">coffee-script</h2></div><div class="row-fluid"><p>coffee-script is a high level language that compiles to JavaScript.  To use it you will need to install coffee-script:</p><pre><code class="">$ npm install coffee-script</code></pre></div><div class="row-fluid"><div class="span6"><h3>Before</h3><pre><code class="lang-coffeescript"><span class="comment"># Assignment:</span>
+number   = <span class="number">42</span>
+opposite = <span class="literal">true</span>
+
+<span class="comment"># Conditions:</span>
+number = -<span class="number">42</span> <span class="keyword">if</span> opposite
+
+<span class="comment"># Functions:</span>
+<span class="function"><span class="title">square</span></span> = (x) -&gt; x * x
+
+<span class="comment"># Arrays:</span>
+list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+
+<span class="comment"># Objects:</span>
+math =
+  root:   Math.sqrt
+  square: square
+  cube:   (x) -&gt; x * square x</code></pre></div><div class="span6"><h3>After</h3><pre><code class="lang-javascript">(<span class="keyword">function</span>() {
+  <span class="keyword">var</span> list, math, number, opposite, square;
+
+  number = <span class="number">42</span>;
+
+  opposite = <span class="literal">true</span>;
+
+  <span class="keyword">if</span> (opposite) {
+    number = -<span class="number">42</span>;
+  }
+
+  square = <span class="keyword">function</span>(x) {
+    <span class="keyword">return</span> x * x;
+  };
+
+  list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+
+  math = {
+    root: Math.sqrt,
+    square: square,
+    cube: <span class="keyword">function</span>(x) {
+      <span class="keyword">return</span> x * square(x);
+    }
+  };
+
+}).call(<span class="keyword">this</span>);
+</code></pre></div></div><div class="row-fluid"><h2 id="cson">cson</h2></div><div class="row-fluid"><p>coffee-script is like JSON but with coffee-script like syntax.  To use it you will need to install cson:</p><pre><code class="">$ npm install cson</code></pre></div><div class="row-fluid"><div class="span6"><h3>Before</h3><pre><code class="lang-coffeescript">{
+  abc: [
+    <span class="string">'a'</span>
+    <span class="string">'b'</span>
+    <span class="string">'c'</span>
+  ]
+  a:
+    b: <span class="string">'c'</span>
+}</code></pre></div><div class="span6"><h3>After</h3><pre><code class="lang-javascript">{<span class="string">"abc"</span>:[<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>],<span class="string">"a"</span>:{<span class="string">"b"</span>:<span class="string">"c"</span>}}</code></pre></div></div><div class="row-fluid"><h2 id="markdown">markdown</h2></div><div class="row-fluid"><p>markdown is a system for writing documents.  The aim is that markdown should be easy to read even when it's in plain text form, but that it can also compile to a nicer formatted html view:</p></div><div class="row-fluid"><div class="span6"><h3>Before</h3><pre><code class="lang-markdown"><span class="header"># Heading 1</span>
+<span class="header">## Heading 2</span>
+
+<span class="code">```</span>
+A code sample
+<span class="code">```</span>
+
+ - ItemA
+ - ItemB
+ - ItemC
+ 
+ 1. One
+ 2. Two
+ 3. Three</code></pre></div><div class="span6"><h3>After</h3><pre><code class="lang-xml"><span class="tag">&lt;<span class="title">h1</span>&gt;</span>Heading 1<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h2</span>&gt;</span>Heading 2<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+<span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">code</span>&gt;</span>
+A code sample
+<span class="tag">&lt;/<span class="title">code</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+<span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;<span class="title">li</span>&gt;</span>ItemA<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;<span class="title">li</span>&gt;</span>ItemB<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">p</span>&gt;</span>ItemC<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">p</span>&gt;</span>One<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;<span class="title">li</span>&gt;</span>Two<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;<span class="title">li</span>&gt;</span>Three<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+</code></pre></div></div><div class="row-fluid"><h2 id="html2jade">html2jade</h2></div><div class="row-fluid"><p>html2jade attempts to convert html back into jade.  Jade is a templating language.  To use html to jade you will need to install it at version 0.0.7:</p></div><pre><code class="">$ npm install html2jade@0.0.7</code></pre><div class="row-fluid"><div class="span6"><h3>Before</h3><pre><code class="lang-xml"><span class="doctype">&lt;!doctype html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"/site.css"</span> /&gt;</span>
+      <span class="tag">&lt;<span class="title">title</span>&gt;</span>Hello<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Hello world!<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></pre></div><div class="span6"><h3>After</h3><pre><code class="lang-jade">!!! 5
+html
+  head
+    link(rel='stylesheet', href='/site.css')
+    title Hello
+  body
+    h1 Hello world!
+</code></pre></div></div><div class="row-fluid"><h2 id="component">component</h2></div><div class="row-fulid"><p>The two transformers &#39;component-js&#39; and &#39;component-css&#39; produce the JavaScript and CSS files from a <a href="https://github.com/component/component">component</a>.  This can&#39;t be easilly demoed here because it requires multiple files to make sense.  To use, first install component-builder.
+</p>
+<pre><code class="">$ npm install component-builder</code></pre><p>Then you can build like any other transformer by pointing it at the <code>component.json</code> file.</p>
+</div></div></div></div></body></html>
