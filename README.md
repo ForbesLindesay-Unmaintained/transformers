@@ -115,6 +115,7 @@ Adding to this list will **not** result in a major version change, so you should
 
    1. dust
    2. qejs
+   3. html2jade
 
 The following transformations sometimes throw an exception if run syncronously, typically they only throw an exception if you are doing something like including another file.  If you are not doing the things that cause them to fail then they are consistently safe to use syncronously.
 

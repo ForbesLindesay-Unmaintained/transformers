@@ -1,3 +1,7 @@
+## 1.8.0 - 2013-01-30
+
+ - **highlight** (needs tests)
+
 ## 1.7.0 - 2013-01-30
 
  - **component-js**
