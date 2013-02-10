@@ -1,3 +1,7 @@
+## 1.8.2 - 2013-02-10
+
+ - Support `sourceURLs` in **component**
+
 ## 1.8.1 - 2013-02-10
 
  - Add travis-ci
