@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/ForbesLindesay/transformers.png?branch=master)](https://travis-ci.org/ForbesLindesay/transformers)
 # transformers
 
   String/Data transformations for use in templating libraries, static site generators and web frameworks.  This gathers the most useful transformations you can apply to text or data into one library with a consistent API.  Transformations can be pretty much anything but most are either compilers or templating engines.
