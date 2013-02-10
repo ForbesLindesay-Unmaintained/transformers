@@ -1,3 +1,9 @@
+## 1.8.1 - 2013-02-10
+
+ - Add travis-ci
+ - FIX **toffee** support which was broken by their latest update
+ - FIX lookup paths for **component** weren't set so you couldn't build components with dependancies
+
 ## 1.8.0 - 2013-01-30
 
  - **highlight** (needs tests)
