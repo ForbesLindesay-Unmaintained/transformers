@@ -62,7 +62,8 @@
     "dot": "*",
     "css": "*",
     "component-builder": "*",
-    "html2jade": "0.0.7"
+    "html2jade": "*",
+    "highlight.js": "*"
   },
   "dependencies": {
     "promise": "~1.3.0"
