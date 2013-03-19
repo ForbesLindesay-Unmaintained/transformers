@@ -1,3 +1,7 @@
+## 1.8.3 - 2013-03-19
+
+ - Update promise dependency
+
 ## 1.8.2 - 2013-02-10
 
  - Support `sourceURLs` in **component**
