@@ -3,9 +3,6 @@
   "version": "1.8.2",
   "description": "String/Data transformations for use in templating libraries, static site generators and web frameworks",
   "main": "lib/transformers.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "pretest": "node test/update-package && npm install",
     "test": "mocha test/test.js -R spec"
@@ -19,7 +16,8 @@
   "readmeFilename": "README.md",
   "gitHead": "4b46e72cba3ad3403fd5ed3802d5472dcfa77311",
   "devDependencies": {
-    "mocha": "~1.7.4",
+    "mocha": "~1.8",
+    "expect.js": "~0.2",
     "swig": "*",
     "atpl": "*",
     "liquor": "*",
@@ -52,7 +50,6 @@
     "markdown-js": "*",
     "markdown": "*",
     "coffee-script": "*",
-    "expect.js": "~0.2.0",
     "uglify-js": "*",
     "cson": "*",
     "coffeekup": "*",
@@ -66,6 +63,6 @@
     "highlight.js": "*"
   },
   "dependencies": {
-    "promise": "~1.3.0"
+    "promise": "~2.0"
   }
 }
