@@ -42,8 +42,8 @@
 
 ### Minifiers
 
-  - [uglify-js](http://documentup.com/mishoo/UglifyJS2) - `npm install uglify-js` minifies javascript
-  - [uglify-css](https://github.com/visionmedia/css) - `npm install css` minifies css
+  - [uglify-js](http://documentup.com/mishoo/UglifyJS2) - No need to install anything, just minifies/beautifies JavaScript
+  - [uglify-css](https://github.com/visionmedia/css) - No need to install anything, just minifies/beautifies CSS
   - ugilify-json - No need to install anything, just minifies/beautifies JSON
 
 ### Other

@@ -50,19 +50,19 @@
     "markdown-js": "*",
     "markdown": "*",
     "coffee-script": "*",
-    "uglify-js": "*",
     "cson": "*",
     "coffeekup": "*",
     "coffeecup": "*",
     "templayed": "*",
     "plates": "*",
     "dot": "*",
-    "css": "*",
     "component-builder": "*",
     "html2jade": "*",
     "highlight.js": "*"
   },
   "dependencies": {
-    "promise": "~2.0"
+    "promise": "~2.0",
+    "css": "~1.0.8",
+    "uglify-js": "~2.2.5"
   }
 }
