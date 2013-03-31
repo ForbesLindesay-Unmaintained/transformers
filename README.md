@@ -68,6 +68,13 @@ Pull requests to add more transforms will always be accepted providing they are 
 
 ### Transformer
 
+  The following options are given special meaning by `transformers`:
+
+   - `filename` is set by transformers automatically if using the `renderFile` APIs.  It is used if `cache` is enabled.
+   - `cache` if true, the template function will be cached where possible (templates are still updated if you provide new options, so this can be used in most live applications).
+   - `sudoSync` used internally to put some asyncronous transformers into "sudo syncronous" mode.  Don't touch this.
+   - `minify` if set to true on a transformer that isn't a minifier, it will cause the output to be minified.  e.g. `coffeeScript.renderSync(str, {minify: true})` will result in minified JavaScript.
+
 #### Transformer.engines
 
   Returns an array of engines that can be used to power this transformer.  The first of these that's installed will be used for the transformation.
