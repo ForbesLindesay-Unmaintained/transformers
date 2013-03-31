@@ -1,3 +1,8 @@
+## 2.0.0 - 2013-03-31
+
+ - Add `minify` support to all transformers
+ - Bundle minifiers in package
+
 ## 1.8.3 - 2013-03-19
 
  - Update promise dependency
