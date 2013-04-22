@@ -1,3 +1,7 @@
+## 2.0.1 - 2013-04-22
+
+ - Fix global leak of `exportscoffeeScript` (test still fails because `jade` requires an out of date version of `transformers`)
+
 ## 2.0.0 - 2013-03-31
 
  - Add `minify` support to all transformers
