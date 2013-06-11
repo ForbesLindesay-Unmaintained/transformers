@@ -51,6 +51,7 @@
   - cdata - No need to install anything, just wraps input as `<![CDATA[${INPUT_STRING]]>` with the standard escape for `]]>` (`]]]]><![CDATA[>`).
   - cdata-js - as `cdata`, but with surrounding comments suitable for inclusion into a HTML/JavaScript `<script>` block: `//<![CDATA[\n${INPUT_STRING\n//]]>`.
   - cdata-css - as `cdata`, but with surrounding comments suitable for inclusion into a HTML/CSS `<style>` block: `/*<![CDATA[*/\n${INPUT_STRING\n/*]]>*/`.
+  - verbatim - No need to install anything, acts as a verbatim passthrough `\nYOUR TEXT\n`
   - [coffee-script](http://coffeescript.org/) - `npm install coffee-script`
   - [cson](https://github.com/bevry/cson) - coffee-script based JSON format
   - markdown - You can use `marked`, `supermarked`, `markdown-js` or `markdown`
