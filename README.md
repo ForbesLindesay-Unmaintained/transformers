@@ -49,6 +49,7 @@
 ### Other
 
   - cdata - No need to install anything, just wrapps text in `<![CDATA[\nYOUR TEXT\n]]>`
+  - verbatim - No need to install anything, acts as a verbatim passthrough `\nYOUR TEXT\n`
   - [coffee-script](http://coffeescript.org/) - `npm install coffee-script`
   - [cson](https://github.com/bevry/cson) - coffee-script based JSON format
   - markdown - You can use `marked`, `supermarked`, `markdown-js` or `markdown`
