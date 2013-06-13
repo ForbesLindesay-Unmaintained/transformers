@@ -48,7 +48,3 @@
     @var: 42;
     filter: alpha(opacity=@var);
 }
-
-a:nth-child(@a) {
-    border: 1px;
-}
