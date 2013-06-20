@@ -103,17 +103,22 @@ Pull requests to add more transforms will always be accepted providing they are 
 
   Synchronous version of `Tranformer.renderFile`
 
-#### Transformer.outputFormat
+#### Transformer.outputFormats
 
-  A string, one of:
+  An array containing, at least one of:
 
    - `'xml'`
    - `'css'`
    - `'js'`
    - `'json'`
    - `'text'`
+   - `'html'`
 
 Adding to this list will **not** result in a major version change, so you should handle unexpected types gracefully (I'd suggest default to assuming `'text'`).
+
+#### Transformer.outputFormat
+
+  One of the modes from `outputFormats`. By default, this is `outputFormats[0]`, but it can be changed manually.
 
 #### Transformer.sync
 
