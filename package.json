@@ -63,6 +63,7 @@
   "dependencies": {
     "promise": "~2.0",
     "css": "~1.0.8",
+    "underscore": "~1.4.4",
     "uglify-js": "~2.2.5"
   }
 }
