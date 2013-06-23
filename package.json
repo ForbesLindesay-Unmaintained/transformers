@@ -5,7 +5,7 @@
   "main": "lib/transformers.js",
   "scripts": {
     "pretest": "node test/update-package && npm install",
-    "test": "mocha test/test.js -R spec"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -63,6 +63,7 @@
   "dependencies": {
     "promise": "~2.0",
     "css": "~1.0.8",
+    "clone": "~0.1.9",
     "uglify-js": "~2.2.5"
   }
 }
