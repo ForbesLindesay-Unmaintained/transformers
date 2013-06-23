@@ -5,7 +5,7 @@
   "main": "lib/transformers.js",
   "scripts": {
     "pretest": "node test/update-package && npm install",
-    "test": "mocha test/test.js -R spec"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
