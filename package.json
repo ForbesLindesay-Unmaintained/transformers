@@ -1,6 +1,6 @@
 {
   "name": "transformers",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "String/Data transformations for use in templating libraries, static site generators and web frameworks",
   "main": "lib/transformers.js",
   "scripts": {
