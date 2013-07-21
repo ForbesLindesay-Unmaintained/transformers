@@ -143,3 +143,9 @@ The following libraries look like they might sometimes throw exceptions when use
    - just
    - ect
    - stylus
+
+## Special Options
+
+###Stylus
+ - `inline` - if set to `true`, stylus will inline all images. See the stylus [docs](http://learnboost.github.io/stylus/docs/functions.url.html).
+ - `use` - an array of functions that will be invoked with the renderer. See `.use(fn)` in the stylus [docs](http://learnboost.github.io/stylus/docs/js.html).
