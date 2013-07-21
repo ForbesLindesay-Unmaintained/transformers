@@ -104,17 +104,22 @@ Pull requests to add more transforms will always be accepted providing they are 
 
   Synchronous version of `Tranformer.renderFile`
 
-#### Transformer.outputFormat
+#### Transformer.outputFormats
 
-  A string, one of:
+  An array containing, at least one of:
 
    - `'xml'`
    - `'css'`
    - `'js'`
    - `'json'`
    - `'text'`
+   - `'html'`
 
 Adding to this list will **not** result in a major version change, so you should handle unexpected types gracefully (I'd suggest default to assuming `'text'`).
+
+#### Transformer.outputFormat
+
+  One of the modes from `outputFormats`. By default, this is `outputFormats[0]`, but it can be changed manually.
 
 #### Transformer.sync
 
@@ -139,3 +144,9 @@ The following libraries look like they might sometimes throw exceptions when use
    - just
    - ect
    - stylus
+
+## Special Options
+
+###Stylus
+ - `inline` - if set to `true`, stylus will inline all images. See the stylus [docs](http://learnboost.github.io/stylus/docs/functions.url.html).
+ - `use` - an array of functions that will be invoked with the renderer. See `.use(fn)` in the stylus [docs](http://learnboost.github.io/stylus/docs/js.html).
