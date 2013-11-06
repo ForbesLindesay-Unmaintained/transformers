@@ -121,3 +121,16 @@ describe('component', function () {
     });
   });
 });
+
+describe('stylus', function () {
+  var p = path.join(__dirname, 'fixtures', 'stylus', 'sample.styl');
+  var expected = path.join(__dirname, 'fixtures', 'stylus', 'expected.css');
+
+  it('can define custom variables', function (done){
+    transformers['stylus'].renderFile(p, { define: { custom_color: 'red', foo: 'bar' } }, function (err, res) {
+      expect(res).to.be(fs.readFileSync(expected, 'utf8'))
+      done();
+    });
+  });
+
+});
