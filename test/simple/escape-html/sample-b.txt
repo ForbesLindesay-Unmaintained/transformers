@@ -1,0 +1,1 @@
+<span class="foo" id='bar'>goodbye world</span>
