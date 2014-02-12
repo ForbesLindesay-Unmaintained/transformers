@@ -1,3 +1,11 @@
+## 3.0.0 - 2014-02-12
+
+ - **escape-html**
+ - remove **html2jade** (it was all round problematic and not kept up to date with recent changes to jade)
+ - remove **component-js** and **component-css** (I don't think they are very useful to have here, browserify is better)
+ - improve **stylus** support
+ - fix **mustache** (it no longer supports caching properly)
+
 ## 2.1.0 - 2013-07-13
 
  - **verbatim**

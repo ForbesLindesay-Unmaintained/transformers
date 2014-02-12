@@ -52,11 +52,10 @@
   - cdata-js - as `cdata`, but with surrounding comments suitable for inclusion into a HTML/JavaScript `<script>` block: `//<![CDATA[\n${INPUT_STRING\n//]]>`.
   - cdata-css - as `cdata`, but with surrounding comments suitable for inclusion into a HTML/CSS `<style>` block: `/*<![CDATA[*/\n${INPUT_STRING\n/*]]>*/`.
   - verbatim - No need to install anything, acts as a verbatim passthrough `${INPUT_STRING}`
+  - escape-html - No need to install anything, just replaces special characters to sanitize input for html/xml
   - [coffee-script](http://coffeescript.org/) - `npm install coffee-script`
   - [cson](https://github.com/bevry/cson) - coffee-script based JSON format
   - markdown - You can use `marked`, `supermarked`, `markdown-js` or `markdown`
-  - [component-js](http://documentup.com/component/component) [(website)](http://component.io) - `npm install component-builder` options: `{development: false}`
-  - [component-css](http://documentup.com/component/component) [(website)](http://component.io) - `npm install component-builder` options: `{development: false}`
 
 Pull requests to add more transforms will always be accepted providing they are open-source, come with unit tests, and don't cause any of the tests to fail.
 
