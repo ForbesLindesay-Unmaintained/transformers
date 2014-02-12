@@ -57,7 +57,6 @@
     "plates": "*",
     "dot": "*",
     "component-builder": "*",
-    "html2jade": "*",
     "highlight.js": "*"
   },
   "dependencies": {

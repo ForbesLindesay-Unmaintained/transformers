@@ -94,41 +94,13 @@ describe('uglify-js', function () {
   });
 });
 
-
-
-describe('component', function () {
-  var p = path.join(__dirname, 'fixtures', 'component', 'component.json');
-  var output = path.join(__dirname, 'fixtures', 'component', 'build');
-  function simplifyCSS(str) {
-    return transformers['uglify-css'].renderSync(str);
-  }
-  describe('component-js', function () {
-    it('builds the JavaScript file', function (done) {
-      transformers['component-js'].renderFile(p, {}, function (err, res) {
-        if (err) return done(err);
-        expect(require('vm').runInNewContext(res + '\nrequire("foo")')).to.be('foo');
-        done();
-      })
-    });
-  });
-  describe('component-css', function () {
-    it('builds the CSS file', function (done) {
-      transformers['component-css'].renderFile(p, {}, function (err, res) {
-        if (err) return done(err);
-        expect(simplifyCSS(res)).to.be("#foo{name:'bar'}#baz{name:'bing'}");
-        done();
-      })
-    });
-  });
-});
-
 describe('stylus', function () {
   var p = path.join(__dirname, 'fixtures', 'stylus', 'sample.styl');
   var expected = path.join(__dirname, 'fixtures', 'stylus', 'expected.css');
 
   it('can define custom variables', function (done){
     transformers['stylus'].renderFile(p, { define: { custom_color: 'red', foo: 'bar' } }, function (err, res) {
-      expect(res).to.be(fs.readFileSync(expected, 'utf8'))
+      expect(res.replace(/\r/g, '')).to.be(fs.readFileSync(expected, 'utf8').replace(/\r/g, ''))
       done();
     });
   });

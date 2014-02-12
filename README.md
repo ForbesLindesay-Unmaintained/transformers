@@ -57,7 +57,6 @@
   - markdown - You can use `marked`, `supermarked`, `markdown-js` or `markdown`
   - [component-js](http://documentup.com/component/component) [(website)](http://component.io) - `npm install component-builder` options: `{development: false}`
   - [component-css](http://documentup.com/component/component) [(website)](http://component.io) - `npm install component-builder` options: `{development: false}`
-  - [html2jade](http://documentup.com/donpark/html2jade) [(website)](http://html2jade.aaron-powell.com/) - `npm install html2jade` - Converts HTML back into jade
 
 Pull requests to add more transforms will always be accepted providing they are open-source, come with unit tests, and don't cause any of the tests to fail.
 
