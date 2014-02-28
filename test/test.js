@@ -106,3 +106,29 @@ describe('stylus', function () {
   });
 
 });
+
+describe('handlebars', function () {
+  var p = path.join(__dirname, 'fixtures', 'handlebars', 'sample.hbs');
+  var expected = path.join(__dirname, 'fixtures', 'handlebars', 'expected.html');
+
+  it('can define partials and helpers', function (done){
+    var options = {
+      user: {
+        name: 'bob'
+      },
+      partials: {
+        partial1: "<p>partial1 content</p>",
+        partial2: "<p>partial2 content</p>"
+      },
+      helpers: {
+        helper1: function() {
+          return "content from helper";
+        }
+      }
+    };
+    transformers['handlebars'].renderFile(p, options, function (err, res) {
+      expect(res.replace(/\r/g, '')).to.be(fs.readFileSync(expected, 'utf8').replace(/\r/g, ''))
+      done();
+    });
+  });
+});
