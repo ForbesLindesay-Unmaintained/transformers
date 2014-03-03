@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "promise": "~2.0",
-    "css": "~1.0.8",
+    "css": "~1.6.0",
     "uglify-js": "~2.2.5"
   }
 }
