@@ -1,1 +1,1 @@
-tobi{name:"bob"}
+tobi{name:"bob";}
