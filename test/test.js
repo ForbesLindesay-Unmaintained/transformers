@@ -3,8 +3,8 @@ var fs = require('fs');
 var path = require('path');
 var expect = require('expect.js');
 
-fs.readdirSync(path.join(__dirname, 'simple'))
-  .forEach(function (transformer) {
+fs.readdirSync(path.join(__dirname, 'simple')).forEach(
+  function (transformer) {
     if (!transformers[transformer]) {
       throw new Error(transformer + ' appears to be undefined.');
     }
@@ -65,20 +65,18 @@ fs.readdirSync(path.join(__dirname, 'simple'))
             done();
           });
         });
-      })
+      });
     });
-  });
+  }
+);
 
-
-
-    function read(name) {
-      try {
-        return fs.readFileSync(locate(name)).toString();
-      } catch (ex) {
-        return null;
-      }
-    }
-
+function read(name) {
+  try {
+    return fs.readFileSync(locate(name)).toString();
+  } catch (ex) {
+    return null;
+  }
+}
 
 describe('uglify-js', function () {
   var str = fs.readFileSync(path.join(__dirname, 'fixtures', 'uglify-js', 'script.js')).toString();
@@ -104,7 +102,6 @@ describe('stylus', function () {
       done();
     });
   });
-
 });
 
 describe('handlebars', function () {
@@ -127,7 +124,7 @@ describe('handlebars', function () {
       }
     };
     transformers['handlebars'].renderFile(p, options, function (err, res) {
-      expect(res.replace(/\r/g, '')).to.be(fs.readFileSync(expected, 'utf8').replace(/\r/g, ''))
+      expect(res.replace(/\r/g, '')).to.be(fs.readFileSync(expected, 'utf8').replace(/\r/g, ''));
       done();
     });
   });

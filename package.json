@@ -62,6 +62,7 @@
   "dependencies": {
     "promise": "~2.0",
     "css": "~1.6.0",
+    "clone": "~0.1.9",
     "uglify-js": "~2.2.5"
   }
 }
