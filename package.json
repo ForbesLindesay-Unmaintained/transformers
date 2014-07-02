@@ -57,7 +57,8 @@
     "plates": "*",
     "dot": "*",
     "component-builder": "*",
-    "highlight.js": "*"
+    "highlight.js": "*",
+    "LiveScript": "*"
   },
   "dependencies": {
     "promise": "~2.0",
