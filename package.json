@@ -61,9 +61,9 @@
     "LiveScript": "*"
   },
   "dependencies": {
-    "promise": "~2.0",
-    "css": "~1.6.0",
-    "clone": "~0.1.9",
-    "uglify-js": "~2.2.5"
+    "promise": "~5.0.0",
+    "css": "~2.0.0",
+    "clone": "~0.1.17",
+    "uglify-js": "~2.4.15"
   }
 }

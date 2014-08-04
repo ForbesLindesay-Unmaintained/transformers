@@ -2,5 +2,5 @@
   function hello(world) {
     return 'Hello ' + world + '!';
   }
-  return hello(name);
+  console.log(hello(name));
 }('Forbes Lindesay'));

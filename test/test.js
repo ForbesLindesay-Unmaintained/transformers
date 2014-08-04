@@ -82,13 +82,26 @@ describe('uglify-js', function () {
   var str = fs.readFileSync(path.join(__dirname, 'fixtures', 'uglify-js', 'script.js')).toString();
   it('minifies files', function () {
     var res = transformers['uglify-js'].renderSync(str, {});
-    expect(res.length).to.be.lessThan(82);
-    expect(require('vm').runInNewContext(res)).to.be('Hello Forbes Lindesay!');
+    expect(res.length).to.be.lessThan(87);
+    var called = false;;
+    Function('console', res)({
+      log: function (res) {
+        called = true;
+        expect(res).to.be('Hello Forbes Lindesay!');
+      }
+    });
+    expect(called).to.be(true);
   });
   it('beautifies files with {mangle: false, compress: false, output: {beautify: true}}', function () {
     var res = transformers['uglify-js'].renderSync(str, {mangle: false, compress: false, output: {beautify: true}});
-    expect(res).to.be('(function(name) {\n    function hello(world) {\n        return "Hello " + world + "!";\n    }\n    return hello(name);\n})("Forbes Lindesay");');
-    expect(require('vm').runInNewContext(res)).to.be('Hello Forbes Lindesay!');
+    var called = false;;
+    Function('console', res)({
+      log: function (res) {
+        called = true;
+        expect(res).to.be('Hello Forbes Lindesay!');
+      }
+    });
+    expect(called).to.be(true);
   });
 });
 
