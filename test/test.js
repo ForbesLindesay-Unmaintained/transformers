@@ -127,8 +127,8 @@ describe('handlebars', function () {
         name: 'bob'
       },
       partials: {
-        partial1: "<p>partial1 content</p>",
-        partial2: "<p>partial2 content</p>"
+        partial1: "<p>partial1 content</p>\n",
+        partial2: "<p>partial2 content</p>\n"
       },
       helpers: {
         helper1: function() {
