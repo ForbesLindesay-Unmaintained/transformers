@@ -1,3 +1,6 @@
+
+# Deprecated, use [jstransformer](https://github.com/jstransformers/jstransformer)
+
 [![Build Status](https://img.shields.io/travis/ForbesLindesay/transformers/master.svg)](https://travis-ci.org/ForbesLindesay/transformers)
 # transformers
 
